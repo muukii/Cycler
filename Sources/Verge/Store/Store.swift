@@ -303,4 +303,9 @@ open class Store<State, Activity>: _VergeObservableObjectBase, CustomReflectable
 
   }
 
+  /// [Experimental]
+  public func readState<Return>(_ perform: (Changes<State>) throws -> Return) rethrows -> Return {
+    try _backingStorage.read(perform)
+  }
+
 }
